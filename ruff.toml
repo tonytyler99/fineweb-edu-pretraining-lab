@@ -1,0 +1,25 @@
+line-length = 100
+target-version = "py311"
+
+extend-exclude = [
+    "notebooks",
+    "runs",
+    "data",
+    "wandb",
+]
+
+[lint]
+# E/W = pycodestyle, F = pyflakes, I = isort, UP = pyupgrade,
+# B = bugbear, SIM = simplify
+select = ["E", "W", "F", "I", "UP", "B", "SIM"]
+
+[lint.per-file-ignores]
+# tests can use assert and longer names freely
+"tests/**" = ["B011"]
+# __init__ files often re-export
+"**/__init__.py" = ["F401"]
+
+[format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "lf"

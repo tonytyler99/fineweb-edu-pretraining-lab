@@ -1,0 +1,36 @@
+# Normalize line endings to LF for cross-platform sanity.
+# Windows checkouts keep CRLF in working tree by default; this enforces LF
+# in the repo so diffs stay clean across Windows / Linux contributors.
+
+*               text=auto eol=lf
+
+# Source / text — force LF
+*.py            text eol=lf
+*.pyi           text eol=lf
+*.md            text eol=lf
+*.yaml          text eol=lf
+*.yml           text eol=lf
+*.toml          text eol=lf
+*.cfg           text eol=lf
+*.txt           text eol=lf
+*.json          text eol=lf
+*.sh            text eol=lf
+
+# Windows scripts keep CRLF
+*.ps1           text eol=crlf
+*.bat           text eol=crlf
+*.cmd           text eol=crlf
+
+# Binary artifacts
+*.pt            binary
+*.bin           binary
+*.safetensors   binary
+*.npy           binary
+*.npz           binary
+*.arrow         binary
+*.parquet       binary
+*.png           binary
+*.jpg           binary
+*.jpeg          binary
+*.gif           binary
+*.pdf           binary
