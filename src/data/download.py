@@ -30,7 +30,13 @@ def iter_fineweb_edu_docs(
         injection is done here; tokenization consumers are responsible for
         adding document separators.
     """
-    stream = load_dataset(FINEWEB_EDU_REPO, name=subset, split=split, streaming=True)
+    try:
+        stream = load_dataset(FINEWEB_EDU_REPO, name=subset, split=split, streaming=True)
+
+    except Exception as e:
+        raise RuntimeError(f"The dataset could not be loaded : {e} ") from e
+
+
 
     for i, sample in enumerate(stream):
         if max_docs is not None and i >= max_docs:
