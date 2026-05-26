@@ -6,7 +6,6 @@
 from __future__ import annotations
 
 from collections.abc import Iterator
-
 from datasets import load_dataset
 
 FINEWEB_EDU_REPO = "HuggingFaceFW/fineweb-edu"

@@ -1,0 +1,25 @@
+# FineWeb-Edu sample-10BT pretraining-shard configuration.
+#
+# Streams docs from Hugging Face, tokenizes with GPT-2 BPE, and writes
+# uint16 binary shards. Consumed by scripts/prepare_data.py; CLI flags
+# of that script override the values below.
+
+dataset:
+  repo: HuggingFaceFW/fineweb-edu
+  subset: sample-10BT
+  split: train  # HF dataset split. FineWeb-Edu publishes only "train".
+
+paths:
+  # Relative to the repo root. Listed in .gitignore.
+  shard_dir: data/shards
+
+tokenization:
+  encoding: gpt2  # tiktoken encoder name; pins vocab (50257) and EOT (50256).
+
+shards:
+  tokens_per_shard: 100000000  # 100M tokens = ~200 MB per uint16 file.
+  val_tokens: 100000000        # First N tokens of the stream go to val_000000.bin.
+
+prep:
+  max_docs: null  # null = full stream. Set to e.g. 1000 for a dry-run.
+  seed: 1337      # Reserved; current prep is deterministic stream order.
